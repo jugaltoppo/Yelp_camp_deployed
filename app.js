@@ -26,8 +26,12 @@ mongoose.set('useUnifiedTopology', true);
 //running the seed.js
 // seedDB();
 
-//connect mongoose
-mongoose.connect("mongodb://localhost/yelp_camp");
+//connect mongoose locally
+// mongoose.connect("mongodb://localhost/yelp_camp");
+
+//conect to cloud  mongoose
+mongoose.connect("mongodb+srv://jugaltoppo:<password>@cluster0-gsqhl.mongodb.net/test?retryWrites=true&w=majority");
+
 //set ejs engine
 app.set("view engine","ejs");
 //make use of body parser
