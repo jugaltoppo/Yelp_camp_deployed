@@ -1,0 +1,14 @@
+.delete-form{
+    display: inline;
+}
+.comment{
+    margin:0;
+}
+.comment-btn{
+    margin-bottom:10px;
+}
+
+.flash-message{
+    transition-duration: 2s;
+    transition-timing-function: ease-out;
+}
