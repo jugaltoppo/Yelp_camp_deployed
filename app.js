@@ -28,6 +28,7 @@ mongoose.set('useUnifiedTopology', true);
 
 //connect mongoose locally or via cloud based on the value of DATABASEURL
 // (in terminal type 'export DATABASEURL=mongodb://localhost/yelp_camp) -> we do this to work in local or clound mongodb
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp"
 mongoose.connect(process.env.DATABASEURL);
 
 //set ejs engine
