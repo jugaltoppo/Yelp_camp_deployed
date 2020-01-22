@@ -26,11 +26,9 @@ mongoose.set('useUnifiedTopology', true);
 //running the seed.js
 // seedDB();
 
-//connect mongoose locally
-// mongoose.connect("mongodb://localhost/yelp_camp");
-
-//conect to cloud  mongoose
-mongoose.connect("mongodb+srv://jugaltoppo:jugaltoppo@udemy-hkqvd.mongodb.net/test?retryWrites=true&w=majority");
+//connect mongoose locally or via cloud based on the value of DATABASEURL
+// (in terminal type 'export DATABASEURL=mongodb://localhost/yelp_camp) -> we do this to work in local or clound mongodb
+mongoose.connect(process.env.DATABASEURL);
 
 //set ejs engine
 app.set("view engine","ejs");
