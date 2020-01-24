@@ -51,5 +51,12 @@
             </div>
             <% } %>
         </div>
+    <div class="moderator">
+        <% if(currentUser && currentUser.isAdmin==true){  %>
+            <div class="alert alert-warning text-danger text-center" role="alert">
+                <h5>Logged in as moderator</h5>
+            </div>
+          <% } %>
+    </div>
 
        

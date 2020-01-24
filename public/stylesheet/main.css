@@ -12,3 +12,9 @@
     transition-duration: 2s;
     transition-timing-function: ease-out;
 }
+.mod{
+    float:right;
+}
+.no-display{
+    display: none;
+}

@@ -26,12 +26,18 @@ router.post("/register",function(req,res){
         if(err){
             console.log(err);
             req.flash("error",err.message);
-            return res.redirect("/register");
-        }
+            res.redirect("/register");
+        }else{
         passport.authenticate("local")(req, res, function(){
+            if(req.body.admin=== process.env.MODCODE){
+                user.isAdmin=true;
+                user.save();
+            }
             req.flash("success",user.username + "Signed up successfully");
             res.redirect("/campgrounds");
+            
         })
+    }
     })
 })
 

@@ -10,6 +10,7 @@ var express        = require("express"),
     passportLocal  = require("passport-local"),
     User           = require("./models/user"),
     flash          = require("connect-flash"),
+    moment         = require("moment"),
     methodOverride = require("method-override");
 
 //requiring routes
@@ -29,7 +30,7 @@ mongoose.set('useUnifiedTopology', true);
 //connect mongoose locally or via cloud based on the value of DATABASEURL
 // (in terminal type 'export DATABASEURL=mongodb://localhost/yelp_camp) -> we do this to work in local or clound mongodb
 var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp"
-mongoose.connect(process.env.DATABASEURL);
+mongoose.connect(url);
 
 //set ejs engine
 app.set("view engine","ejs");
@@ -54,8 +55,11 @@ passport.deserializeUser(User.deserializeUser());
 app.use(function(req, res, next){
     //sends username to every page header.ejs
     res.locals.currentUser = req.user;
+    //for flash messages
     res.locals.error = req.flash("error");
     res.locals.success = req.flash("success");
+    //for moment js
+    res.locals.moment = moment;
     next();
 });
 
