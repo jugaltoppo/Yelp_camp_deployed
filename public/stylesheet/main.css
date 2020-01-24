@@ -18,3 +18,9 @@
 .no-display{
     display: none;
 }
+.index img{
+    max-height: 250px;
+}
+.info img{
+    max-height: 25rem;
+}

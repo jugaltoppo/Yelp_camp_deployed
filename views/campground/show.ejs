@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <h4 class="card-title"><a href=""><%= campground.name %></a> <span class="float-right">$<%= campground.price %>/night</span></h4>                                     
                     <p class="card-text"> <%= campground.description %> </p>
-                    <p><em>Submitted by :- <%= campground.author.username %> </em>, <%= moment(campground.date).fromNow()%></p>
+                    <p><em>Submitted by :- <a href="/user/<%= campground.author.id %>"><%= campground.author.username %> </a> </em>, <%= moment(campground.date).fromNow()%></p>
                     
                     <% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
                         <a class="btn btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>

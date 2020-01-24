@@ -22,7 +22,7 @@ router.get("/register",function(req,res){
 
 //handle signup form
 router.post("/register",function(req,res){
-    User.register(new User({username: req.body.username}), req.body.password, function(err,user){
+    User.register(new User({username: req.body.username, fullname: req.body.fullName, email: req.body.email, about: req.body.about, avatar: req.body.avatar}), req.body.password, function(err,user){
         if(err){
             console.log(err);
             req.flash("error",err.message);
@@ -62,6 +62,18 @@ router.get("/logout",function(req,res){
     req.flash("success", "Successfully logged out");
     res.redirect("/campgrounds");
 })
+
+//=============================================
+//USER ROUTES
+//=============================================
+
+router.get("/user/:id",function(req,res){
+    User.findOne({_id: req.params.id},function(err, foundUser){
+        Campground.find().where("author.id").equals(req.params.id).exec(function(err,campContributes){
+            res.render("user/user", {user: foundUser, camps: campContributes});
+        })
+    });
+});
 
 //middleware
 // function isLoggedIn(req, res, next){
